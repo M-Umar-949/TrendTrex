@@ -1,0 +1,214 @@
+@import "https://unpkg.com/open-props";
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background: linear-gradient(45deg, #ce3333, #e59e5c); */
+    /* background: linear-gradient(45deg, #0d0d0d, #ffffff); */
+    font-family: 'sans';
+    overflow:auto;
+
+ }
+
+ #bg-video {
+  position: fixed;
+  top: 0; /* Position from the top of the viewport */
+  left: 0; /* Position from the left of the viewport */
+  width: 100%; /* Fill the width of the viewport */
+  height: 100%; /* Fill the height of the viewport */
+  object-fit: cover; /* Maintain aspect ratio and cover entire viewport */
+  z-index: -1;
+}
+
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    }
+  
+  .card {
+    margin-right: auto; 
+    margin-left: auto; 
+    margin:0 auto;
+    max-width: 90%; 
+    box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2); 
+    height: 4%; 
+    border-radius: 5px; 
+    backdrop-filter: blur(14px); 
+    background-color: rgba(255, 255, 255, 0.2); 
+    padding: 10px; 
+    text-align: center; 
+  }
+  
+  .card h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  button {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+
+
+.button {
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-6);
+  font-size: var(--font-size);
+  color: white;
+  background: transparent;
+  border: 0;
+  padding: var(--size) var(--size);
+  transform: translateY(calc(var(--y, 0) * 1%)) scale(var(--scale));
+  transition: transform 0.1s;
+  position: relative;
+  max-width: 270px;
+
+}
+
+.button:hover {
+  --y: -10;
+  --scale: 1.1;
+  --border-scale: 1;
+}
+
+.button:active {
+  --y: 5%;
+  --scale: 0.9;
+  --border-scale: 0.9, 0.8;
+}
+
+.button:before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--size-3) * -1);
+  border: var(--size-2) solid var(--gray-0);
+  transform: scale(var(--border-scale, 0));
+  transition: transform 0.125s;
+  
+  --angle-one: 105deg;
+  --angle-two: 290deg;
+  --spread-one: 30deg;
+  --spread-two: 40deg;
+  --start-one: calc(var(--angle-one) - (var(--spread-one) * 0.5));
+  --start-two: calc(var(--angle-two) - (var(--spread-two) * 0.5));
+  --end-one: calc(var(--angle-one) + (var(--spread-one) * 0.5));
+  --end-two: calc(var(--angle-two) + (var(--spread-two) * 0.5));
+  
+  mask: conic-gradient(
+    transparent 0 var(--start-one),
+    white var(--start-one) var(--end-one),
+    transparent var(--end-one) var(--start-two),
+    white var(--start-two) var(--end-two),
+    transparent var(--end-two)
+  );
+  
+  z-index: -1;
+}
+
+
+  
+
+header {
+    position: absolute; /* Fixed positioning */
+    top: 0; /* Stick to the top */
+    width: 100%; /* Take up the full width of the viewport */
+    background-color: transparent; /* blue color, you can change it to your preferred color */
+    color: #fff; /* text color */
+    padding: 20px; /* padding around the header content */
+    text-align: center; /* center the text */
+    opacity: 90%;
+    z-index: 100;
+    }
+.header-style {
+  font-family: Calibri, 'sans';
+}
+
+.header-title {
+  font-size: 50px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 0px;
+}
+
+.input-wrapper label {
+  margin-right: 10px;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 10px;
+  border: 3px solid #000000;
+  border-radius: 5px;
+
+  width: 100%; /* set the width of all input elements to 100% */
+  box-sizing: border-box; /* make sure the width includes the border and padding */
+  margin-bottom: 20px; 
+}
+#billAmountDisplay {
+  font-family: 'Arial', sans-serif; /* Use a prominent font like Arial */
+  font-size: 24px; /* Larger font size */
+  font-weight: bold; /* Bold text */
+  color: #333; /* Text color */
+}
+
+table {
+  width: 50%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden; /* Ensures rounded corners are visible */
+  font-family: 'sans'; /* Font family */
+  font-size: 20px; /* Font size */
+  color: #ffffff; /* Font color */
+  opacity:80%;
+
+  backdrop-filter: blur(14px); 
+  background-color: rgba(255, 255, 255, 0.2); 
+}
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  background-color: #000000;
+  font-weight: bold;
+}
+
+.itemsets-container {
+  margin-top: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 5px; /* Add spacing between list items */
+}
+
+/* Styles for ul and li */

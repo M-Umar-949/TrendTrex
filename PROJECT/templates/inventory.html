@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<style>
+    select, .button {
+    width: 40%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  .button-gap {
+  margin: 0 30px;
+}
+  </style>
+<body>
+    <header class="header-style">
+        <h1 class="header-title">TrendTrex</h1>
+    
+        <br>
+        <br>
+        <div style="display: flex; justify-content: center; gap: 40px;">
+          <button class="button" id="insightbutton">Get insights</button>
+          <button class="button" id="home">Home</button>
+
+        </div>
+      </header>
+
+      <video autoplay muted loop id="bg-video">
+        <source src="{{ url_for('static', filename='bg.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+
+
+      <table border="1" style="margin-top: 10%;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Available</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in inventory_data %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.available }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+
+
+        const insightbutton = document.getElementById('insightbutton');
+
+        insightbutton.addEventListener('click', function() {
+            // Redirect to the inventory URL using Flask's url_for
+            window.location.href = "{{ url_for('insight') }}";
+        });
+
+        const homeb = document.getElementById('home');
+
+        homeb.addEventListener('click', function() {
+            // Redirect to the inventory URL using Flask's url_for
+            window.location.href = "{{ url_for('home') }}";
+        });
+
+    </script>
+</body>
+</html>

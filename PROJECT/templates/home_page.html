@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrendTrex</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<style>    
+
+
+  /* body {
+    background: linear-gradient(45deg, #ce3333, #e59e5c);
+  } */
+  select, .button {
+    width: 40%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  .button-gap {
+  margin: 0 30px;
+}
+</style>
+<body>
+  <header class="header-style">
+    <h1 class="header-title">TrendTrex</h1>
+
+    <br>
+    <br>
+    <div style="display: flex; justify-content: center; gap: 40px;">
+      <button class="button" id="insightbutton">Get insights</button>
+      <button class="button" id="inventorybutton">Check inventory</button>
+    </div>
+  </header>
+
+
+
+  <video autoplay muted loop id="bg-video">
+    <source src="{{ url_for('static', filename='bg.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="container">
+    <div class="card" style="width: 800px; margin: 0 auto; text-align: center;">
+      <br>
+      <br>
+      <button id="add-item" class="button">Add Item</button>
+      <div id="bill-form" style="display: none;">
+        <br>
+        <br>  
+        <button class="button" id="add-to-bill-button">Add to Bill</button>
+
+        <br>
+        <br>
+        <!-- <p>Item&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+          Quantity&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Price</p> -->
+      </div>
+      <div id="billAmountDisplay" style="color: #ccc; font-family: 'sans';font-weight: bold;"></div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <script>
+    const addItemButton = document.querySelector('#add-item');
+    const billForm = document.querySelector('#bill-form');
+    const addToBillButton = document.querySelector('#add-to-bill-button');
+
+    let items = [];
+
+    addItemButton.addEventListener('click', () => {
+      const itemForm = document.createElement('form');
+      itemForm.innerHTML = `
+        <div class="input-wrapper">
+          <input type="text" id="item-name" name="item-name" style="height: 41.5px;" placeholder="Item">
+          <input type="number" id="quantity" name="quantity" step="1" placeholder="Quantity">
+        </div>
+      `;
+      billForm.appendChild(itemForm);
+      billForm.style.display = 'block';
+
+      itemForm.addEventListener('input', () => {
+        const itemNameInput = itemForm.querySelector('#item-name');
+        const quantityInput = itemForm.querySelector('#quantity');
+        const itemName = itemNameInput.value.trim(); // Trim to remove leading/trailing spaces
+        const quantity = parseInt(quantityInput.value);
+
+        if (itemName && !isNaN(quantity) && quantity > 0) {
+          items.push({ name: itemName, quantity: quantity });
+        }
+      });
+    });
+
+    addToBillButton.addEventListener('click', () => {
+      const currentDateTime = new Date().toISOString(); // Get current date and time in ISO format
+
+      // Extract date and time components
+      const currentDate = currentDateTime.split('T')[0]; // Get current date in YYYY-MM-DD format
+      const currentTime = currentDateTime.split('T')[1].split('.')[0]; // Get current time in HH:mm:ss format
+
+      const transactionData = {
+        date: currentDate,
+        time: currentTime,
+        items: items
+      };
+
+
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', '/add_transaction');  // Flask route to handle transaction data
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.onload = function() {
+    if (xhr.status === 200) {
+      const responseData = JSON.parse(xhr.responseText);
+      const billAmount = responseData.billAmount; // Assuming the server sends back the bill amount
+      // Display the bill amount in your HTML, e.g., update a <div> element
+      document.getElementById('billAmountDisplay').innerText = `Total Bill Amount: $${billAmount.toFixed(2)}`;
+    } else {
+      console.error('Error:', xhr.statusText);
+    }
+  };
+      const data = JSON.stringify(transactionData);
+      xhr.send(data);
+    });
+
+
+
+
+    const inventoryButton = document.getElementById('inventorybutton');
+
+    inventoryButton.addEventListener('click', function() {
+        // Redirect to the inventory URL using Flask's url_for
+        window.location.href = "{{ url_for('inventory') }}";
+    });
+
+    const insightbutton = document.getElementById('insightbutton');
+
+    insightbutton.addEventListener('click', function() {
+        // Redirect to the inventory URL using Flask's url_for
+        window.location.href = "{{ url_for('insight') }}";
+    });
+
+
+  </script>
+
+  </body>
+
+  </html>

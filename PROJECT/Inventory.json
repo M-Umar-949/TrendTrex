@@ -1,0 +1,39 @@
+[
+    {
+      "name": "rice",
+      "available": 40
+    },
+    {
+      "name": "bread",
+      "available": 50
+    },
+    {
+      "name": "milk",
+      "available": 30
+    },
+    {
+      "name": "salt",
+      "available": 20
+    },
+    {
+      "name": "pasta",
+      "available": 35
+    },
+    {
+      "name": "juice",
+      "available": 25
+    },
+    {
+      "name": "vegetables",
+      "available": 40
+    },
+    {
+      "name": "water",
+      "available": 60
+    },
+    {
+      "name": "coffee",
+      "available": 15
+    }
+  ]
+  

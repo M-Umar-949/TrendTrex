@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+  <style>
+      .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    }
+  
+  .card {
+
+    box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2); 
+    height: 4%; 
+    border-radius: 5px; 
+    backdrop-filter: blur(14px); 
+    background-color: rgba(255, 255, 255, 0.2); 
+    padding: 10px; 
+    text-align: center; 
+  }
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background: linear-gradient(45deg, #ce3333, #e59e5c); */
+    /* background: linear-gradient(45deg, #0d0d0d, #ffffff); */
+    overflow: hidden;
+
+ }
+
+ form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  button {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  header {
+    position: fixed; /* Fixed positioning */
+    top: 0; /* Stick to the top */
+    width: 100%; /* Take up the full width of the viewport */
+    background-color: transparent; /* blue color, you can change it to your preferred color */
+    color: #fff; /* text color */
+    padding: 20px; /* padding around the header content */
+    text-align: center; /* center the text */
+    }
+.header-style {
+  font-family: Calibri, sans-serif;
+}
+
+.header-title {
+  font-size: 50px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+#bg-video {
+  position: fixed;
+  top: 0; /* Position from the top of the viewport */
+  left: 0; /* Position from the left of the viewport */
+  width: 100%; /* Fill the width of the viewport */
+  height: 100%; /* Fill the height of the viewport */
+  object-fit: cover; /* Maintain aspect ratio and cover entire viewport */
+  z-index: -1;
+}
+
+.button1 {
+    background-color: #000000;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    width: 10px;
+  }
+  
+.button1:hover {
+    background-color: #1f1f1f;
+  }
+
+  .header-title {
+  font-size: 50px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+    </style>
+</head>
+<body>
+    <header class="header-style">
+        <h1 class="header-title">TrendTrex</h1>
+      </header>
+
+      <video autoplay muted loop id="bg-video">
+        <source src="{{ url_for('static', filename='bg.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+  <div class="container">
+    <div class="card">
+      <h2 style="color: rgb(255, 255, 255); font-weight: bold;">Login</h2>
+
+      <form action="{{ url_for('home') }}" method="POST">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit" style="width: 280px;" class="button1">Login</button>
+        {% if error %}
+        <p style="color: rgb(255, 0, 0);">{{ error }}</p>
+      {% endif %}
+      </form>
+    </div>
+  </div>
+</body>
+</html>

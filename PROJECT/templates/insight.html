@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<style>
+
+    .container1 {
+      display: flex;
+      flex-direction: column; /* Stack items vertically */
+      align-items: center; /* Center items horizontally */
+      margin-top: 20%;
+      max-width: 200px;
+      padding: 0%;
+      position: absolute;
+    }
+    select, .button {
+        width: 40%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .button-gap {
+        margin: 0 30px;
+    }
+
+    .itemset-container {
+        backdrop-filter: blur(14px); 
+        background-color: rgba(255, 255, 255, 0.2); 
+        color: rgb(255, 255, 255); /* Text color */
+        padding: 10px; /* Padding for the container */
+        border-radius: 5px; /* Rounded corners for the container */
+        margin-top: 20px; /* Top margin */
+        opacity: 80%;
+    }
+
+    /* Style for the ordered list */
+    .itemset-list {
+        list-style-type: decimal; /* Ordered list style */
+        padding-left: 0%; /* Left padding for list items */
+        font-size:  20px;
+        font-family: 'sans';
+        justify-content: center;
+        margin-left: 10%;
+    }
+
+    /* Style for list items */
+    .itemset-list li {
+        margin-bottom: 5px; /* Bottom margin for list items */
+    }
+
+    #chart-container {
+        backdrop-filter: blur(14px); 
+        background-color: rgba(255, 255, 255, 0.2); 
+        color: rgb(0, 0, 0); /* Text color */
+        padding: 10px; /* Padding for the container */
+        border-radius: 5px; /* Rounded corners for the container */
+        margin-top: 20px; /* Top margin */
+        opacity: 80%;
+
+    }
+</style>
+<body>
+
+  <header class="header-style">
+    <h1 class="header-title">TrendTrex</h1>
+    <br>
+    <br>
+    <div style="display: flex; justify-content: center; gap: 40px;">
+      <button class="button" id="inventorybutton">Check inventory</button>
+      <button class="button" id="home">Home</button>
+    </div>
+  </header>
+
+  <video autoplay muted loop id="bg-video">
+    <source src="{{ url_for('static', filename='bg.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="container1">
+    <div class="itemset-container">
+      <h2 style="font-family: 'sans';">Frequent Itemsets</h2>
+      <ol class="itemset-list">
+          {% for itemset in itemsets %}
+              <li>{{ itemset }}</li>
+          {% endfor %}
+      </ol>
+    </div>
+
+    <div id="chart-container">
+      <svg id="myChart"></svg>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='chart.js') }}"></script>
+
+  <script>
+    const inventoryButton = document.getElementById('inventorybutton');
+    inventoryButton.addEventListener('click', function() {
+        // Redirect to the inventory URL using Flask's url_for
+        window.location.href = "{{ url_for('inventory') }}";
+    });
+
+    const homeb = document.getElementById('home');
+    homeb.addEventListener('click', function() {
+        // Redirect to the inventory URL using Flask's url_for
+        window.location.href = "{{ url_for('home') }}";
+    });
+  </script>
+</body>
+</html>

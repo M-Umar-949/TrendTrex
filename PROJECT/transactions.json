@@ -1,0 +1,51 @@
+[
+    {
+        "transaction_id": 1,
+        "date": "2024-04-28",
+        "items": [
+            {"name": "Rice", "quantity": 2},
+            {"name": "Milk", "quantity": 1},
+            {"name": "Bread", "quantity": 3},
+            {"name": "Canned Vegetables", "quantity": 2}
+        ]
+    },
+    {
+        "transaction_id": 2,
+        "date": "2024-04-29",
+        "items": [
+            {"name": "Salt", "quantity": 1},
+            {"name": "Juice", "quantity": 2},
+            {"name": "Pasta", "quantity": 2},
+            {"name": "Canned Beans", "quantity": 3}
+        ]
+    },
+    {
+        "transaction_id": 3,
+        "date": "2024-04-30",
+        "items": [
+            {"name": "Coffee", "quantity": 1},
+            {"name": "Canned Beans", "quantity": 2},
+            {"name": "Bottled Water", "quantity": 4}
+        ]
+    },
+    {
+        "transaction_id": 4,
+        "date": "2024-05-01",
+        "items": [
+            {"name": "Juice", "quantity": 3},
+            {"name": "Pasta", "quantity": 1},
+            {"name": "Rice", "quantity": 1},
+            {"name": "Bread", "quantity": 2},
+            {"name": "Coffee", "quantity": 1}
+        ]
+    },
+    {
+        "transaction_id": 5,
+        "date": "2024-05-02",
+        "items": [
+            {"name": "Bottled Water", "quantity": 3},
+            {"name": "Milk", "quantity": 2},
+            {"name": "Canned Vegetables", "quantity": 1}
+        ]
+    }
+]
