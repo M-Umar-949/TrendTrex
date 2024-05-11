@@ -1,5 +1,6 @@
 # TrendTrex
 A simple billing system with Apriori implementation
+Makesure to set mongoDB connection before getting started :)
 
 # Tech Stack
 - Python
