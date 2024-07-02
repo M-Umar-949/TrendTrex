@@ -11,4 +11,6 @@ Makesure to set mongoDB connection before getting started :)
 - d3
 - MongoDB
 
-  The json files in the folder are some sample data files to be inserted into DB
+  The json files in the folder are some sample data files to be inserted into DB.
+  <br>
+  Detailed readme coming soon 😃 
